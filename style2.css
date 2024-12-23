@@ -10,7 +10,7 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #2B2B2B;
+    background: #2b2b2b;
     border-radius: 8px;
 }
 
@@ -35,9 +35,9 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #0D1117;
+    background-color: #0d1117;
     color: #fff;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
     min-height: 100vh;
     width: 100%;
 }
@@ -70,7 +70,7 @@ p {
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    background-color: #0D1117;
+    background-color: #0d1117;
     padding: 0;
     margin: 0;
 }
@@ -242,7 +242,7 @@ th {
     padding: 10px;
     z-index: 5;
     background-color: transparent;
-    transition-duration: .2s;
+    transition-duration: 0.2s;
 }
 
 .menu ul {
@@ -279,7 +279,7 @@ th {
     font-size: 40px;
     z-index: 4;
     color: rgba(255, 255, 255, 0.5);
-    transition-duration: .2s;
+    transition-duration: 0.2s;
 }
 
 .toggle:hover {
@@ -521,6 +521,7 @@ tr:nth-child(7) {
 .download-list {
     margin-top: 0 !important;
 }
+
 .generarPlanoFinal {
     display: flex;
     flex-wrap: wrap;
@@ -536,11 +537,9 @@ tr:nth-child(7) {
     background-color: #ff3077;
 }
 
-
 .generarPlanoFinal button:nth-child(4):hover {
     background-color: #c4215a;
 }
-
 
 #imageInventory {
     position: relative;
@@ -567,6 +566,9 @@ tr:nth-child(7) {
 }
 
 @media only screen and (max-width: 950px) {
+    body {
+        overflow-x: hidden;
+    }
 
     .gas-table table,
     thead,
@@ -576,7 +578,7 @@ tr:nth-child(7) {
     th {
         display: block;
         width: 100%;
-
+        height: auto;
     }
 
     .gas-table td {
@@ -590,6 +592,11 @@ tr:nth-child(7) {
         margin-top: 0;
         font-size: 17px;
         text-transform: none;
+    }
+
+    .gas-table tr:nth-child(6),
+    tr:nth-child(7) {
+        height: auto;
     }
 
     .center {
@@ -609,20 +616,16 @@ tr:nth-child(7) {
     #tC1 td input,
     #tC2 td input,
     #tC3 td input {
-        width: 40%;
+        width: 80%;
         padding: 4px;
+        height: 40px;
+        font-size: 20px;
     }
 
-    #tC1 table {
-        width: 50% !important;
-    }
-
-    #tC2 table {
-        width: 50% !important;
-    }
-
+    #tC1 table,
+    #tC2 table,
     #tC3 table {
-        width: 50% !important;
+        width: 100% !important;
     }
 
     #tC1 thead tr:nth-child(1) th {
@@ -644,7 +647,7 @@ tr:nth-child(7) {
         align-items: center;
         flex-direction: column;
         justify-content: center;
-        margin: 10px auto;
+        margin: 30px auto;
         max-width: 100%;
     }
 
@@ -748,7 +751,7 @@ tr:nth-child(7) {
     }
 
     .container .tablaDiam table td input {
-        width: 200px;
+        width: 250px;
         height: 38px;
         font-size: 17px;
         text-align: center;
@@ -771,9 +774,9 @@ tr:nth-child(7) {
     }
 
     .tablaDiam table td {
+        font-size: 22px;
         display: block;
         padding: 0.5rem 1rem;
-        padding: 10px;
     }
 
     .tablaDiam table tr {
@@ -788,7 +791,6 @@ tr:nth-child(7) {
 
     .container .tablaDiam {
         max-height: 630px;
-
     }
 
     #dataTable select {
@@ -797,5 +799,9 @@ tr:nth-child(7) {
         text-align: center;
         width: 170px;
         height: 33px;
+    }
+
+    #canvasContainer {
+        width: 100% !important;
     }
 }

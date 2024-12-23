@@ -37,30 +37,48 @@
 <body>
   <div class="navBar" id="navBar">
     <h1>Gasify</h1>
-
-
     <!-- Menú de navegación -->
     <div class="menuGral" id="menuGral">
       <div class="menuTabs" id="menu">
         <button class="tab-button" onclick="toggleCalculator('tC')">Tabla de cálculos</button>
-        <button class="tab-button" onclick="toggleCalculator('cm3')">Calc. de m3</button>
-        <button class="tab-button" onclick="toggleCalculator('cc3')">Consumo en m3</button>
-        <button class="tab-button" onclick="toggleCalculator('ct')">Calc. térmica</button>
-        <button class="tab-button" onclick="toggleCalculator('cr')">Rejillas</button>
+        <div class="navCalc">
+          <button class="tab-button" id="showCalc">Calculadoras</button>
+          <div class="calc" id="calc">
+            <button class="tab-button" onclick="toggleCalculator('cm3')">Calc. de m3</button>
+            <button class="tab-button" onclick="toggleCalculator('cc3')">Consumo en m3</button>
+            <button class="tab-button" onclick="toggleCalculator('ct')">Calc. térmica</button>
+            <button class="tab-button" onclick="toggleCalculator('cr')">Rejillas</button>
+          </div>
+        </div>
         <button class="tab-button" onclick="toggleCalculator('customCalculator')">Pérdida por accesorios</button>
-        <button id="cerrarMenu" onclick="closeMenu()">X</button>
       </div>
       <div class="userAndMore" id="userAndMore">
         <a href="dibujar-planos.html">Dibujar plano y +</a>
         <div id="user-info">
-          <span id="username" onclick="toggleLogoutMenu()"></span>
-          <button id="logout-button">Cerrar sesión</button>
+          <span id="username-desktop"></span>
+          <button id="logout-button-desktop">Cerrar sesión</button>
         </div>
       </div>
     </div>
     <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
   </div>
 
+  <div class="mobileNavbar" id="mobileNavbar">
+    <a class="closeMenu" id="closeMenu" onclick="closeMenu()">X</a>
+    <div class="content-mobileNavbar">
+      <button class="tab-button" onclick="toggleCalculator('tC')">Tabla de cálculos</button>
+      <button class="tab-button" onclick="toggleCalculator('cm3')">Calc. de m3</button>
+      <button class="tab-button" onclick="toggleCalculator('cc3')">Consumo en m3</button>
+      <button class="tab-button" onclick="toggleCalculator('ct')">Calc. térmica</button>
+      <button class="tab-button" onclick="toggleCalculator('cr')">Rejillas</button>
+      <button class="tab-button" onclick="toggleCalculator('customCalculator')">Pérdida por accesorios</button>
+      <a href="dibujar-planos.html">>> Dibujar plano y +</a>
+      <div id="user-info">
+        <span id="username-mobile" onclick="openLogoutbutton()"></span>
+        <button id="logout-button-mobile">>Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
 
 
   <div class="container">
@@ -396,44 +414,36 @@
   <script type="module" src="app.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const usernameElement = document.getElementById("username");
-      const logoutMenu = document.getElementById("user-info");
-      const logoutButton = document.getElementById("logout-button");
+      const usernameDesktop = document.getElementById("username-desktop");
+      const usernameMobile = document.getElementById("username-mobile");
+      const logoutDesktop = document.getElementById("logout-button-desktop");
+      const logoutMobile = document.getElementById("logout-button-mobile");
 
       // Recuperar el nombre de usuario
       const username = localStorage.getItem("username");
-      if (username) {
-        usernameElement.textContent = `${username}`;
-      } else {
-        usernameElement.textContent = "Invitado";
-        console.error("No se encontró el nombre de usuario.");
-      }
+      const usernameText = username ? username : "Invitado";
 
-      // Mostrar el cuadro al pasar el mouse por username
-      usernameElement.addEventListener("mouseover", () => {
-        logoutMenu.style.display = "block";
-      });
-
-      // Asegurarse de que el cuadro no desaparezca si el mouse está sobre él
-      logoutMenu.addEventListener("mouseover", () => {
-        logoutMenu.style.display = "block";
-      });
+      if (usernameDesktop) usernameDesktop.textContent = usernameText;
+      if (usernameMobile) usernameMobile.textContent = usernameText;
 
       // Manejar el cierre de sesión
-      if (logoutButton) {
-        logoutButton.addEventListener("click", () => {
-          firebaseAuth
-            .signOut()
-            .then(() => {
-              localStorage.removeItem("username");
-              window.location.href = "index.html"; // Redirige al usuario
-            })
-            .catch((error) => {
-              console.error("Error al cerrar sesión:", error);
-            });
-        });
-      }
+      [logoutDesktop, logoutMobile].forEach((logoutButton) => {
+        if (logoutButton) {
+          logoutButton.addEventListener("click", () => {
+            firebaseAuth
+              .signOut()
+              .then(() => {
+                localStorage.removeItem("username");
+                window.location.href = "index.html"; // Redirige al usuario
+              })
+              .catch((error) => {
+                console.error("Error al cerrar sesión:", error);
+              });
+          });
+        }
+      });
     });
+
   </script>
   <p class="versionPrueba">Versión de prueba, no está completa y puede contener errores</p>
 </body>

@@ -1,26 +1,41 @@
+const showCalcs = document.getElementById('showCalc');
+const dropdownMenu = document.getElementById('calc');
+
+showCalcs.addEventListener('mouseenter', () => {
+    dropdownMenu.classList.add('show');
+});
+showCalcs.addEventListener('mouseleave', () => {
+    dropdownMenu.classList.remove('show');
+});
+dropdownMenu.addEventListener('mouseenter', () => {
+    dropdownMenu.classList.add('show');
+});
+dropdownMenu.addEventListener('mouseleave', () => {
+    dropdownMenu.classList.remove('show');
+});
+
+
+function closeLogoutbutton() {
+    const showMenu = document.getElementById('logout-button-mobile');
+    closeMenu.classList.remove("show");
+}
+function openLogoutbutton() {
+    const closeMenu = document.getElementById('logout-button-mobile');
+    closeMenu.classList.toggle("show-logout-button");
+}
+
+
 function toggleMenu() {
-    const menu = document.getElementById('menuGral');
-    const body = document.body;
-
-    menu.classList.toggle('active');
-
-    if (menu.classList.contains('active')) {
-        // Bloquea el desplazamiento
-        body.style.overflow = 'hidden';
-    } else {
-        // Habilita el desplazamiento
-        body.style.overflow = '';
-    }
+    const showMenu = document.getElementById('mobileNavbar');
+    showMenu.classList.toggle("show");
 }
-
 function closeMenu() {
-    const menu = document.getElementById('menuGral');
-    const body = document.body;
-
-    // Cierra el menú y habilita el desplazamiento
-    menu.classList.remove('active');
-    body.style.overflow = '';
+    const closeMenu = document.getElementById('mobileNavbar');
+    closeMenu.classList.remove("show");
 }
+
+
+
 
 
 function toggleCalculator(id) {
@@ -41,12 +56,8 @@ function toggleCalculator(id) {
         // Alternar la clase "active" para mostrar u ocultar la calculadora
         calculator.classList.toggle("active");
     }
-    const menu = document.getElementById('menuGral');
-    const body = document.body;
-
-    // Cierra el menú y habilita el desplazamiento
-    menu.classList.remove('active');
-    body.style.overflow = '';
+    const closeMenu = document.getElementById('mobileNavbar');
+    closeMenu.classList.remove("show");
 }
 
 // Opcional: Mostrar una calculadora y su sección relacionada por defecto al cargar la página
@@ -253,21 +264,6 @@ function addSubtractionData() {
     newDataSet.innerHTML = '<input type="number" class="data" placeholder="Calorías a evacuar u oxigenar"><button onclick="removeDataSet(this)" class="eliminar">Eliminar</button>';
     subtractionCalculator.appendChild(newDataSet);
 }
-
-// Toggle
-document.addEventListener('DOMContentLoaded', function () {
-    var menuLinks = document.querySelectorAll('.menu a');
-    var overlay = document.querySelector('.overlay');
-    var toggleIcon = document.querySelector('.toggle');
-    menuLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-            var menu = document.querySelector('.menu');
-            menu.style.display = 'none';
-            overlay.style.display = 'none'; // Ocultar el overlay
-            toggleIcon.classList.remove('active'); // Quitar la clase active al icono del menú
-        });
-    });
-});
 
 // Función para calcular calorías necesarias para calefaccionar un ambiente
 function calculateCustom() {

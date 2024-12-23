@@ -48,6 +48,28 @@ body {
   min-height: 100vh;
   width: 100%;
 }
+.navBar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  justify-content: space-around;
+  padding: 10px 20px;
+  align-items: center;
+  transition: all 1s;
+}
+
+.navBar a {
+  text-decoration: none;
+  color: inherit;
+  padding: 12px;
+  border: 1px solid #3a3a3a;
+  border-radius: 50px;
+}
+
+.navBar a:hover {
+  text-decoration: underline;
+}
 
 h1 {
   font-size: 2.8em;
@@ -65,21 +87,13 @@ h1:hover {
 .menuGral {
   position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0;
-  padding: 0;
 }
 
 .menuTabs {
   border: 1px solid #3a3a3a;
   border-radius: 50px;
-}
-
-.tabs {
   display: flex;
-  position: relative;
-  flex-direction: row;
+  margin-right: 50px;
 }
 
 .tab-button {
@@ -92,36 +106,53 @@ h1:hover {
 .tab-button:hover {
   color: #9c9c9c;
   background-color: transparent;
-  font-size: 16px;
 }
 
-.navBar {
+.navCalc {
   display: flex;
   flex-direction: row;
+  position: relative;
+}
+
+.calc {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 45px;
+  width: auto;
+  height: auto;
+  background-color: #131417bd;
+  border-radius: 30px;
+  z-index: 1;
+}
+
+.calc::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
   width: 100%;
-  justify-content: space-between;
-  padding: 0 10px 0 10px;
-  align-items: center;
+  height: 100%;
+  background-color: #131417;
+  filter: blur(50px);
+  z-index: -1;
+  border-radius: 30px;
 }
 
-.navBar a {
-  text-decoration: none;
-  color: inherit;
-  padding: 12px;
-  border: 1px solid #3a3a3a;
-  border-radius: 50px;
+.calc button {
+  margin: 0;
 }
 
-.navBar a:hover {
-  text-decoration: underline;
+#calc.show {
+  display: flex;
 }
 
 .userAndMore  {
   display: flex;
   width: auto;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   margin-left: 50px;
 }
 
@@ -135,12 +166,12 @@ h1:hover {
   border-radius: 50px;
   background-color: #3f3f3f;
   cursor: pointer;
-  transition-duration: 2s;
   margin: 0 0 0 10px;
 }
 
 #user-info button {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   color: white;
   border: none;
   cursor: pointer;
@@ -149,18 +180,96 @@ h1:hover {
   background-color: transparent;
   position: absolute;
   top: 45px;
-  right: 1px;
+  right: 0;
   width: 200px;
   padding: 10px;
   background-color: #3f3f3f;
+  transition: top 0.5s, opacity 0.5s;
+}
+
+#username-desktop:hover, #username-mobile:hover {
+  transition: 0.2s;
+  color: #9c9c9c;
 }
 
 #user-info:hover button {
-  display: block !important;
+  opacity: 1;
+  visibility: visible;
+  right: 1px;
 }
 
-#cerrarMenu {
-display: none;
+.mobileNavbar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #131417;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-mobileNavbar {
+  display: flex;
+  flex-direction: column;
+  margin-top: -150px;
+  align-items: center;
+}
+.content-mobileNavbar a {
+  color: #fff;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+#mobileNavbar.show {
+  display: flex;
+}
+
+#mobileNavbar.show #user-info {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  margin: 0;
+}
+
+#username-mobile {
+  border: 1px solid #3a3a3a;
+    border-radius: 100px;
+    padding: 10px 12px;
+    font-size: 20px;
+}
+
+#mobileNavbar.show #user-info button {
+  opacity: 0;
+  transition: left 5s;
+  visibility: hidden;
+  padding: 10px 10px;
+}
+
+#mobileNavbar.show #user-info:hover button {
+      opacity: 1;
+      visibility: visible;
+      left: 10px;
+      height: auto;
+      background-color: transparent;
+      padding-top: 16px;
+      margin-left: -40px;
+      bottom: 1px;
+      font-size: 16px;
+}
+
+#user-info .show-logout-button {
+  opacity: 1;
+    visibility: visible;
+    left: 10px;
+    height: auto;
+    background-color: transparent;
+    padding-top: 16px;
+    margin-left: -40px;
+    bottom: 1px;
+    font-size: 16px;
 }
 
 .menu-toggle {
@@ -170,9 +279,23 @@ display: none;
   border: none;
   font-size: 2em;
   cursor: pointer;
+  padding: 0;
+  margin: 0;
 }
 
+.closeMenu {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  font-weight: 900;
+}
 
+.closeMenu:hover {
+  cursor: pointer;
+  color: #9c9c9c;
+}
 
 
 
@@ -620,6 +743,21 @@ tr:nth-child(7) {
   margin-top: 0 !important;
 }
 
+@media only screen and (max-width: 1080px) {
+.menuTabs {
+    border-radius: 50px;
+    margin-right: 0;
+  }
+    .userAndMore {
+      margin-left: 10px;
+    }
+}
+
+
+
+
+
+
 @media only screen and (max-width: 950px) {
   .gas-table table,
   thead,
@@ -849,27 +987,14 @@ tr:nth-child(7) {
   .menu-toggle {
     display: block;
   }
+
+  .navBar {
+    justify-content: space-between;
+  }
+
   .menuGral {
     display: none;
     padding-top: 50px;
-  }
-  .menuGral.active {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #333;
-  }
-
-  .menuGral.active #cerrarMenu {
-    display: block;
-    font-size: 30px;
-    background-color: transparent;
-    border: none;
-    margin-top: 40px;
   }
 
   .tabs {
@@ -886,6 +1011,7 @@ tr:nth-child(7) {
   .tab-button {
     font-size: 25px;
     text-transform: uppercase;
+    font-weight: 600;
   }
 
   .userAndMore {

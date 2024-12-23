@@ -10,19 +10,57 @@ body {
     background-color: #01212e;
 }
 
+.formulario-iniciosesion {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    background-image: linear-gradient(to bottom right, #0D1117 45%, #1b222b 0%);
+    justify-content: flex-start;
+}
+
+h1, h2 {
+    color: #fff;
+    margin: 0;
+}
+
+h1:hover, h2:hover {
+    cursor: default;
+}
+
+h2 {
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
 .gasify {
     position: relative;
-    font-size: 100px;
+    font-size: 120px;
     font-family: "Mukta-Bold";
-    top: -100px;
+    color: #fff;
+    margin: 0;
 }
 
 .info {
+    width: 100%;
+    height: auto;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 15px;
-    font-style: italic;
-    top: -240px;
     color: #fff;
+    margin: 0;
+    margin-bottom: 70px;
+    padding: 0;
+}
+
+.info p {
+    font-size: 14px;
+    margin-top: -55px;
+    margin-left: -50px;
 }
 
 .login {
@@ -36,15 +74,6 @@ body {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.6);
 }
-.formulario-iniciosesion {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    background-image: linear-gradient(to bottom right, #0D1117 45%, #1b222b 0%);
-}
 
 #formulario-sesion {
     width: 250px;
@@ -53,11 +82,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: -150px;
 }
 
 #formulario-sesion a {
-    font-size: 15px;
+    font-size: 16px;
     color: #7c2cdd;
     margin-top: 5px;
 }
@@ -69,7 +97,7 @@ body {
 
 input {
     padding: 8px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: #fff;
 }
@@ -82,11 +110,11 @@ input[type="submit"] {
     border-radius: 30px;
     color: #01212e;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 900;
     font-style: normal;
-    margin-top: 50px;
     width: 80%;
+    margin-top: 10px;
 }
 
 input[type="email"], [type="password"] {
@@ -95,7 +123,7 @@ input[type="email"], [type="password"] {
     cursor: pointer;
     border-radius: 30px;
     background-color: #ffffff6c;
-    color: #222;
+    color: #111;
     margin: 5px;
     font-weight: 400;
     font-style: normal;
@@ -105,7 +133,6 @@ input[type="email"], [type="password"] {
 button {
     padding: 10px;
     font-size: 16px;
-    margin-left: 10px;
 }
 
 ul {
@@ -119,17 +146,8 @@ li {
     border: 1px solid #ddd;
     margin-bottom: 5px;
     display: flex;
-    justify-content: space-between;
 }
 
-h1, h2 {
-    text-align: center;
-    position: relative;
-    font-size: 30px;
-    color: #fff;
-    text-transform: uppercase;
-    top: -150px;
-}
 
 @media only screen and (max-width: 600px) {
 .formulario-iniciosesion {
